@@ -43,14 +43,15 @@ def decrypt_file(file: open, key: bytes):
         print(f'finished decrypting {file}')
 
 
-try:
-    if sys.argv[1] == 'encrypt':
-        encrypt_file(sys.argv[2])
-    elif sys.argv[1] == 'decrypt':
-        decrypt_file(sys.argv[2], sys.argv[3].encode())
-    else:
-        print('''glew encrypt [file]
-glew decrypt \'[file]\' \'[key]\'''')
-except IndexError:
-    print('''glew encrypt \'[file]\'
-glew decrypt \'[file]\' \'[key]\'''')
+if __name__ == '__main__':
+    try:
+        if sys.argv[1] == 'encrypt':
+            encrypt_file(sys.argv[2])
+        elif sys.argv[1] == 'decrypt':
+            decrypt_file(sys.argv[2], sys.argv[3].encode())
+        else:
+            print('''glew encrypt [file]
+    glew decrypt \'[file]\' \'[key]\'''')
+    except IndexError:
+        print('''glew encrypt \'[file]\'
+    glew decrypt \'[file]\' \'[key]\'''')
