@@ -1,8 +1,4 @@
-import base64
-import pickle
-import bz2
-import os
-import sys
+import base64, pickle, bz2, os, sys
 from cryptography.fernet import Fernet
 
 ENCRYPTION_EXTENSION = '.sev2'
