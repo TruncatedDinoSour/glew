@@ -1,3 +1,5 @@
+#!/bin/env python3
+
 import base64, pickle, bz2, os, sys, functools
 from cryptography.fernet import Fernet
 
@@ -30,7 +32,7 @@ def decrypt_file(file: open, key: bytes):
             fernet = Fernet(base64.b64decode(key))
             with bz2.BZ2File(file, 'rb', compresslevel=9) as f:
                 enc_data = base64.b85decode(pickle.load(f))
-                with open(f"_{file.replace(ENCRYPTION_EXTENSION, '')}", 'wb') as f1:
+                with open(f"{file.replace(ENCRYPTION_EXTENSION, '')}_", 'wb') as f1:
                     f1.write(fernet.decrypt(bytes(enc_data)))
                     f1.flush()
                 f.flush()
